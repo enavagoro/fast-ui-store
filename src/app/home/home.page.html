@@ -1,20 +1,38 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Tiendas Samurai
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="item-content"  *ngFor="item of array"> <!-- aqui va el for-->
+    <ion-item class="item-store" button (click)="buttonClick()" *ngIf="value">
+      <ion-avatar>
+        <img src="./assets/icon/online-shopping.svg">
+      </ion-avatar>
+      <ion-avatar>
+        <img class="grayscale" src="./assets/icon/online-shopping.svg">
+      </ion-avatar>
+      <div class="item-titles">
+        <ion-label class="title">
+          {{store}}
+        </ion-label>
+        <ion-label class="subtitle">
+          {{ip}}
+        </ion-label>
+      </div>
+    </ion-item>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <ion-item class="item-store" button (click)="buttonClick()" *ngIf="!value">
+      <div class="spinner-container">
+        <ion-spinner name="crescent"></ion-spinner>
+      </div>
+    </ion-item>
   </div>
+
+  <ion-button (click)="changeValue()">
+    cambiar valor
+  </ion-button>
 </ion-content>
